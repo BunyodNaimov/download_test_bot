@@ -19,4 +19,4 @@ def download_instagram(link):
 	response = requests.get(url, headers=headers, params=querystring)
 	result = json.loads(response.text)
 	return result
-print(download_instagram("https://www.instagram.com/reel/DHn2qIuM6V2/?igsh=MTRqZmZ0bjllZ3ozNA=="))
+# print(download_instagram("https://www.instagram.com/reel/DHn2qIuM6V2/?igsh=MTRqZmZ0bjllZ3ozNA=="))

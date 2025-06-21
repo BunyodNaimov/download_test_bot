@@ -15,6 +15,7 @@ from utils import download_instagram
 load_dotenv()
 # Bot tokenini muhit o'zgaruvchilaridan olish
 TOKEN = getenv("BOT_TOKEN")
+bot = Bot(token=TOKEN)
 
 # Xabarlarni qayta ishlash uchun dispetcher
 dp = Dispatcher()
@@ -45,6 +46,8 @@ async def command_start_handler(message: Message) -> None:
 # /help buyrug'i uchun ishlovchi
 @dp.message(Command("help"))
 async def command_help_handler(message: Message) -> None:
+    await bot.delete_message(message.chat.id, message.message_id-1)
+
     # Yordam xabarini yuborish
     await message.answer(
         "📚 Bot yordami:\n"
@@ -120,7 +123,7 @@ async def process_download_callback(callback: CallbackQuery):
 # Botni ishga tushirish
 async def main() -> None:
     # Botni ishga tushirish
-    bot = Bot(token=TOKEN)
+    # bot = Bot(token=TOKEN)
     # Bot buyruqlarini o'rnatish
     await set_bot_commands(bot)
     # Xabarlarni qayta ishlashni boshlash
